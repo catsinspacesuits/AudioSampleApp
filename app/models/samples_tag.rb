@@ -1,0 +1,2 @@
+class SamplesTag < ApplicationRecord
+end

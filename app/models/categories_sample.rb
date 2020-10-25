@@ -1,0 +1,2 @@
+class CategoriesSample < ApplicationRecord
+end
