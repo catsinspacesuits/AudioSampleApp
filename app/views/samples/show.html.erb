@@ -1,0 +1,5 @@
+<h2><%= @sample.title %></h2>
+<p><%= @sample.description %></p>
+<h5><%= @sample.file_type %></h5>
+<%= link_to "Delete", sample_path(@sample), method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+

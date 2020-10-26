@@ -1,3 +1,5 @@
 class Sample < ApplicationRecord
-  has_and belongs_to_many :categories, :tags
+  has_and_belongs_to_many :categories
+    has_and_belongs_to_many :tags
+
 end
