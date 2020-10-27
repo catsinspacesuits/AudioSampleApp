@@ -1,8 +1,7 @@
 <%= simple_form_for @sample do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :category %>
-  <%= f.input :tag %>
+  <%= f.input :tag_list, label: "Tag List (comma separated please!)" %>
   <%= f.input :file_type %>
   <%= f.button :submit %>
 <% end %>

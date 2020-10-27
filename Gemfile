@@ -7,6 +7,8 @@ ruby '2.5.3'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'

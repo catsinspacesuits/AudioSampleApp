@@ -1,11 +1,22 @@
 class SamplesController < ApplicationController
   before_action :find_sample, only: [:edit, :update, :destroy, :show]
 
+  # assign samples with tag(s) 
+  def tagged
+    if params[:tag].present?
+      @samples = Sample.tagged_with(params[:tag])
+      @tag = params[:tag]
+    else
+      @samples = Sample.all
+    end
+  end
+
   def index
     @samples = Sample.all
   end
 
   def show
+    @related_samples = @sample.find_related_tags
   end
 
   def new
@@ -41,7 +52,7 @@ class SamplesController < ApplicationController
   end
 
   def sample_params
-    params.require(:sample).permit(:title, :description, :tag, :category, :file_type)
+    params.require(:sample).permit(:title, :description, :file_type, :tag_list)
   end
 end
 
