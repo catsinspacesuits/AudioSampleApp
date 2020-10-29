@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :samples
   get '/tagged', to: 'samples#tagged', as: :tagged
-  # get '/users/new', to: 'users#new', as: 'register'
+  resources :categories
+  get '/categorised_samples', to: 'categories#categorise_samples'
 end

@@ -1,0 +1,4 @@
+<h2>categorised</h2>
+<% @samples.each do |sample| %>
+<%= link_to sample.title, sample_path(sample) %>
+<% end %>

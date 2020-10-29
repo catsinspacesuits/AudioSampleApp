@@ -12,7 +12,7 @@ class SamplesController < ApplicationController
   end
 
   def index
-    @samples = Sample.all
+    @samples = Sample.all.order('created_at DESC')
   end
 
   def show
@@ -52,7 +52,7 @@ class SamplesController < ApplicationController
   end
 
   def sample_params
-    params.require(:sample).permit(:title, :description, :file_type, :tag_list)
+    params.require(:sample).permit(:title, :description, :file_type, :tag_list, category_ids: [])
   end
 end
 
