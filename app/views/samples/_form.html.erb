@@ -3,11 +3,9 @@
   <%= f.input :description %>
   <%= f.input :tag_list, label: "Tag List (comma separated please!)" %>
   <%= f.input :file_type %>
-  
-
   <%= f.association :categories, as: :check_boxes %>
-
-
-
+  <%= f.input :audio, as: :hidden, input_html: { value: @sample.cached_audio_data } %>
+  <%= f.input :audio, as: :file %>
+  
   <%= f.button :submit %>
 <% end %>

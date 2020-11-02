@@ -52,7 +52,7 @@ class SamplesController < ApplicationController
   end
 
   def sample_params
-    params.require(:sample).permit(:title, :description, :file_type, :tag_list, category_ids: [])
+    params.require(:sample).permit(:title, :description, :audio, :file_type, :tag_list, category_ids: [])
   end
 end
 
