@@ -3,3 +3,13 @@
 @import "tether";
 
 
+.alert, .notice {
+  position: absolute;
+  height: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+

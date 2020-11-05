@@ -1,21 +1,29 @@
 <h2><%= @sample.title %></h2>
-<p><%= @sample.description %></p>
-<h5><%= @sample.file_type %></h5>
+<p>Description: <%= @sample.description %></p>
+<h5>File type: <%= @sample.file_type %></h5>
+<!-- show categories, if any -->
+<% if @sample.categories.count != 0 %>
 <h5>Category(s): 
   <% @sample.categories.each do |category| %>
   <%= link_to category.name, category_path(category) %> 
-    <%= "|" if @sample.categories.count > 1  %>
   <% end %>  
 </h5>
+<% end %>
+<!-- tag list -->
+<span>Tags: </span>
+<% @sample.tag_list.each do |tag| %>
+    <span class="badge badge-info"><%= link_to tag, tagged_path(tag: tag) %>
+    </span>
+  <% end %><br>
 <%= audio_tag @sample.audio_url, controls:true if @sample.audio %>
-<h5><% @sample.tag_list.each do |tag| %>
-    <%= link_to tag, tagged_path(tag: tag) %>
-  <% end %></h5>
+<!-- show samples with a common tag, if any -->  
+<% if @related_samples.length != 0 %>  
 <h5>related samples: 
-  <% @related_samples.each do |rs| %> <!-- show other samples that have a common tag -->
+  <% @related_samples.each do |rs| %>
     <%= link_to rs.title, sample_path(rs) %>
   <% end %>
 </h5>
+<% end %>
 
 <%= link_to "Delete", sample_path(@sample), method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
 <%= link_to "Edit", edit_sample_path %>
