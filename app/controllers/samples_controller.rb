@@ -30,7 +30,11 @@ class SamplesController < ApplicationController
   def create
     @sample = Sample.new(sample_params)
     @sample.save
-    redirect_to sample_path(@sample)
+    if @sample.save
+      redirect_to samples_path
+    else
+      render 'new'
+    end
   end
 
   def edit

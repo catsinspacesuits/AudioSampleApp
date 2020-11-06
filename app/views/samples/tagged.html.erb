@@ -1,6 +1,5 @@
 <!-- show samples with specific tag -->
 <h4 class="tags-header">Samples with <i><%= @tag %></i> tag</h4>
-
 <% @samples.each do |sample| %>
   <div class="sample-container">
   <h5><strong><%= link_to sample.title, sample_path(sample) %></strong></h5>
