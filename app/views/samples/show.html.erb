@@ -5,7 +5,7 @@
 <% if @sample.categories.count != 0 %>
 <h5>Category(s): 
   <% @sample.categories.each do |category| %>
-  <%= link_to category.name, category_path(category) %> 
+  <%= link_to category.name, categorised_samples_path(category: category.id) %> 
   <% end %>  
 </h5>
 <% end %>

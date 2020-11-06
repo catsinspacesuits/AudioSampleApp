@@ -1,0 +1,14 @@
+<h2 class="tags-header">All Tags</h2>
+<div class="tags-header-box">
+  <p>Choose or search for a tag to see its related audio samples</p>
+</div>
+<div class="tags-container">
+  <% @tags.each do |tag| %>
+  <button class="btn btn-success tag-list-tag"><%= link_to tag, tagged_path(tag: tag.name) %></button>
+  <% end %>
+</div>
+
+
+
+
+

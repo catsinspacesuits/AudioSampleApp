@@ -1,14 +1,28 @@
-<h2>Samples</h2>
+<h2 class="samples-header">All Samples</h2>
+<div class="samples-header-box">
+  <p>Find samples by tag or categories or view all samples below.</p>
+  <button type="button" class="btn btn-primary"><a href="<%= tags_index_path %>">Tags</a></button>
+  <button type="button" class="btn btn-success"><a href="<%= categories_path %>">Categories</a></button>
+</div>
+
 <% @samples.each do |sample| %>
-  <ul>
-    <li><h4><%= link_to sample.title, sample_path(sample) %>: </h4><p><%= sample.description %></p></li>
-  </ul>
-  <%= audio_tag sample.audio_url, controls:true if sample.audio %>
- 
- <p><% sample.tag_list.each do |tag| %>
-    <%= link_to tag, tagged_path(tag: tag) %>
-  <% end %></p>
-<% end %>
+  <div class="sample-container">
+  <h5><strong><%= link_to sample.title, sample_path(sample) %></strong></h5>
+    <%= audio_tag sample.audio_url, controls:true, class: "audio-player" if sample.audio %>
+    <span>Tags: </span>
+    <% sample.tag_list.each do |tag| %>
+      <div class="badge badge-info"><%= link_to tag, tagged_path(tag: tag) %>
+      </div>
+    <% end %>
+    <span> | </span>
+    <span>Category: </span> 
+      <% sample.categories.each do |category| %>
+      <div class="badge badge-warning"><%= link_to category.name, categorised_samples_path(category: category.id) %></div> 
+    <% end %>  
+  </div>   
+  <% end %>
+  <br>
+</div>
 
 
 

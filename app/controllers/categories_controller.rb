@@ -2,8 +2,8 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def categorise_samples
-    @samples = Sample.joins(:categories).where(categories: {id: params[:category]})
-    @category = params[:category]
+    @samples = Sample.includes(:categories).where(categories: {id: params[:category]})
+    @category = Category.where(id: params[:category])
   end
 
   def index

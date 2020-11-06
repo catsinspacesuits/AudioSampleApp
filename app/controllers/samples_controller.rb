@@ -3,12 +3,16 @@ class SamplesController < ApplicationController
 
   # assign samples with tag(s) 
   def tagged
+    @tag = params[:tag]
     if params[:tag].present?
       @samples = Sample.tagged_with(params[:tag])
-      @tag = params[:tag]
     else
       @samples = Sample.all
     end
+  end
+
+  def tags_index
+    @tags = ActsAsTaggableOn::Tag.all.order('name asc')
   end
 
   def index

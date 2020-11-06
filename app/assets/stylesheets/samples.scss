@@ -1,3 +1,51 @@
-// Place all the styles related to the samples controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.audio-player {
+  display: block;
+  padding: 5px 0;
+  margin: 0 auto;
+}
+
+.sample-container {
+  margin: 10px auto;
+  width: 40%;
+  text-align: center;
+  border: 1px solid #888;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #bbb;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.samples-header {
+  text-align: center;
+  margin: 20px;
+}
+
+.samples-header-box {
+  margin: 0 auto 40px;
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.tags-container {
+  margin: 10px auto;
+  width: 40%;
+  padding: 8px;
+}
+
+.tags-header {
+  text-align: center;
+  margin: 20px;
+}
+
+.tag-list-tag {
+  margin: 4px;
+}
+
+.tags-header-box {
+  margin: 0 auto 40px;
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+}
+

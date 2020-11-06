@@ -1,7 +1,21 @@
 <!-- show samples with specific tag -->
-<h4>Samples with <i><%= @tag %></i> tag:</h4>
-<% @samples.each do |sample |%>
-  <ul>
-    <li><%= link_to sample.title, sample_path(sample) %></li>
-  </ul>
-<% end %>
+<h4 class="tags-header">Samples with <i><%= @tag %></i> tag</h4>
+
+<% @samples.each do |sample| %>
+  <div class="sample-container">
+  <h5><strong><%= link_to sample.title, sample_path(sample) %></strong></h5>
+    <%= audio_tag sample.audio_url, controls:true, class: "audio-player" if sample.audio %>
+    <span>Tags: </span>
+    <% sample.tag_list.each do |tag| %>
+      <div class="badge badge-info"><%= link_to tag, tagged_path(tag: tag) %>
+      </div>
+    <% end %>
+    <span> | </span>
+    <span>Category: </span> 
+      <% sample.categories.each do |category| %>
+      <div class="badge badge-warning"><%= link_to category.name, categorised_samples_path(category: category.id) %></div> 
+    <% end %>  
+  </div>   
+  <% end %>
+  <br>
+</div>

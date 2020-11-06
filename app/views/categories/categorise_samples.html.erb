@@ -1,4 +1,20 @@
-<h2>categorised</h2>
+<h4 class="samples-header"><strong><%= @category[0].name %></strong> audio samples</h4>
 <% @samples.each do |sample| %>
-<%= link_to sample.title, sample_path(sample) %>
-<% end %>
+  <div class="sample-container">
+  <h5><strong><%= link_to sample.title, sample_path(sample) %></strong></h5>
+    <%= audio_tag sample.audio_url, controls:true, class: "audio-player" if sample.audio %>
+    <span>Tags: </span>
+    <% sample.tag_list.each do |tag| %>
+      <div class="badge badge-info"><%= link_to tag, tagged_path(tag: tag) %>
+      </div>
+    <% end %>
+    <span> | </span>
+    <span>Category: </span> 
+      <% sample.categories.each do |category| %>
+      <div class="badge badge-warning"><%= link_to category.name, categorised_samples_path(category: category.id) %></div> 
+    <% end %>  
+  </div>   
+  <% end %>
+  <br>
+</div>
+

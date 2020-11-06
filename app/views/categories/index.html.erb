@@ -1,25 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h2 class="categories-header">Categories</h2>
+<div class="categories-header-box">
+  <p>Choose a category to see its related audio samples</p>
+</div>
+<div class="categories-container">
+  <% @categories.each do |category| %>
+  <button class="btn btn-success categories-list-category"><%= link_to category.name, categorised_samples_path(category: category)  %></button>
+  <% end %>
+</div>
 
-<h1>Categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.name, categorised_samples_path(category: category) %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
