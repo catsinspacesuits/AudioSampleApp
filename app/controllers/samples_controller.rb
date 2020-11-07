@@ -1,22 +1,12 @@
 class SamplesController < ApplicationController
   before_action :find_sample, only: [:edit, :update, :destroy, :show]
 
-  # assign samples with tag(s) 
-  def tagged
-    @tag = params[:tag]
-    if params[:tag].present?
-      @samples = Sample.tagged_with(params[:tag])
-    else
-      @samples = Sample.all
-    end
-  end
-
-  def tags_index
-    @tags = ActsAsTaggableOn::Tag.all.order('name asc')
-  end
-
   def index
-    @samples = Sample.all.order('created_at DESC')
+    if params[:query].present?
+      @samples = Sample.search_by_title(params[:query]).order('created_at DESC')
+    else
+      @samples = Sample.all.order('created_at DESC')
+    end
   end
 
   def show
@@ -51,6 +41,20 @@ class SamplesController < ApplicationController
   def destroy
     @sample.destroy
     redirect_to samples_path
+  end
+
+   # assign samples with tag(s) 
+  def tagged
+    @tag = params[:tag]
+    if params[:tag].present?
+      @samples = Sample.tagged_with(params[:tag])
+    else
+      @samples = Sample.all
+    end
+  end
+
+  def tags_index
+    @tags = ActsAsTaggableOn::Tag.all.order('name asc')
   end
 
   private

@@ -1,8 +1,14 @@
-<h2 class="samples-header">All Samples</h2>
 <div class="samples-header-box">
-  <p>Find samples by tag or categories or view all samples below.</p>
+  <p>Find samples by tag or categories or use the search function.</p>
   <button type="button" class="btn btn-primary"><a href="<%= tags_index_path %>">Tags</a></button>
   <button type="button" class="btn btn-success"><a href="<%= categories_path %>">Categories</a></button>
+  <!-- search function -->
+  <div class="search-box">
+    <%= form_tag(samples_path, method: "get") do %>
+      <%= text_field_tag :query, nil, placeholder: ' search audio...' %>
+      <button class="btn btn-secondary" type="submit">Search</button>
+    <% end %>
+  </div>
 </div>
 
 <% @samples.each do |sample| %>
