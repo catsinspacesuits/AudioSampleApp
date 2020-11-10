@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/tags_index', to: 'samples#tags_index'
   resources :categories
   get '/categorised_samples', to: 'categories#categorise_samples'
+  resources :libraries
 end
