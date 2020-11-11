@@ -4,7 +4,7 @@
 </div>
 <div class="categories-container">
   <% @categories.each do |category| %>
-  <button class="btn btn-success categories-list-category"><%= link_to category.name, categorised_samples_path(category: category)  %></button>
+  <button class="btn btn-success categories-list-category"><%= link_to category.name, categorised_path(category: category)  %></button>
   <% end %>
 </div>
 
