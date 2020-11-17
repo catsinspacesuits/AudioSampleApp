@@ -12,6 +12,7 @@ gem 'devise'
 gem 'popper_js'
 gem 'tether-rails'
 gem "shrine", "~> 3.0"
+gem 'aws-sdk-s3'
 gem 'pg_search'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
@@ -64,7 +65,6 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 4.0'
   # Adds support for Capybara system testing and selenium driver
-  gem 'shoulda-matchers', '~> 4.0'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome

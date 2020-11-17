@@ -23,7 +23,7 @@
     <span> | </span>
     <span>Category: </span> 
       <% sample.categories.each do |category| %>
-      <div class="badge badge-warning"><%= link_to category.name, categorised_samples_path(category: category.id) %></div> 
+      <div class="badge badge-warning"><%= link_to category.name, categorised_path(category: category.id) %></div> 
     <% end %>  
   </div>   
   <% end %>
