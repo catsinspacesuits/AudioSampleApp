@@ -1,5 +1,6 @@
 class SamplesController < ApplicationController
   before_action :find_sample, only: [:edit, :update, :destroy, :show]
+  # after_action :verify_authorized
 
   def index
     if params[:query].present?
@@ -15,10 +16,12 @@ class SamplesController < ApplicationController
 
   def new
     @sample = Sample.new
+    authorize @sample
   end
 
   def create
     @sample = Sample.new(sample_params)
+    authorize @sample
     @sample.save
     if @sample.save
       redirect_to samples_path
@@ -28,9 +31,11 @@ class SamplesController < ApplicationController
   end
 
   def edit
+    authorize @sample
   end
 
   def update
+    authorize @sample
     if @sample.update(sample_params)
       redirect_to sample_path(@sample)
     else
@@ -39,6 +44,7 @@ class SamplesController < ApplicationController
   end
 
   def destroy
+    authorize @sample
     @sample.destroy
     redirect_to samples_path
   end

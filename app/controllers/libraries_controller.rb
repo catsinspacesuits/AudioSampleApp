@@ -10,13 +10,16 @@ class LibrariesController < ApplicationController
 
   def new
     @library = Library.new
+    authorize @library
   end
 
   def edit
+    authorize @library
   end
 
   def create
     @library = Library.new(library_params)
+    authorize @library
 
     respond_to do |format|
       if @library.save
@@ -30,6 +33,7 @@ class LibrariesController < ApplicationController
   end
 
   def update
+    authorize @library
     respond_to do |format|
       if @library.update(library_params)
         format.html { redirect_to @library, notice: 'Library was successfully updated.' }
@@ -42,6 +46,7 @@ class LibrariesController < ApplicationController
   end
 
   def destroy
+    authorize @library
     @library.destroy
     respond_to do |format|
       format.html { redirect_to libraries_url, notice: 'Library was successfully destroyed.' }
