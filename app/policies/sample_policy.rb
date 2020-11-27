@@ -1,25 +1,25 @@
 class SamplePolicy < ApplicationPolicy
-  def admin_permission
-    @admin_permission = user && user.admin == true 
+  def test
+    @test = user && user.admin
   end
 
   def destroy?
-    @admin_permission
+    user && user.admin
   end
 
   def create?
-    @admin_permission
+    user && user.admin
   end
 
   def new?
-    @admin_permission
+    @test
   end
 
   def update?
-    @admin_permission 
+    user && user.admin 
   end
 
   def edit?
-    @admin_permission
+    user && user.admin
   end
 end
