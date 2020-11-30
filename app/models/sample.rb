@@ -13,7 +13,7 @@ class Sample < ApplicationRecord
   has_many :sample_categories
   has_many :categories, through: :sample_categories
   # validations
-  validates :title, :file_type, :audio_data, presence: { message: "Field is mandatory"}
+  validates :title, :file_type, :audio_data, :channels, :file_size, :sample_rate, presence: { message: "Field is mandatory"}
   validates :title, uniqueness: { message: "Title already used. Please use another."}
   validates_associated :categories
 end

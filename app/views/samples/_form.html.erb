@@ -2,8 +2,11 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :tag_list, label: "Tag List (comma separated please!)" %>
-  <%= f.input :file_type %>
-  <%= f.association :categories, as: :check_boxes %>
+  <%= f.input :file_type, :collection => %w[wav mp3 flac], selected: "wav" %>
+  <%= f.input :file_size %>
+  <%= f.input :channels, :collection => %w[stereo mono], selected: "stereo" %>
+  <%= f.input :sample_rate, :collection => %w[96kHz/24-bit 192kHz/32-bit], selected: "96kHz/24-bit" %>
+  <%= f.association :categories, as: :select %>
   <%= f.input :audio, as: :hidden, input_html: { value: @sample.cached_audio_data } %>
   <%= f.input :audio, as: :file %>
   

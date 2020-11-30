@@ -1,6 +1,10 @@
 <h2><%= @sample.title %></h2>
 <p>Description: <%= @sample.description %></p>
 <h5>File type: <%= @sample.file_type %></h5>
+<h5>Channels: <%= @sample.channels %></h5>
+<h5>File size: <%= @sample.file_size %></h5>
+<h5>Sample rate: <%= @sample.sample_rate %></h5>
+
 <!-- show categories, if any -->
 <% if @sample.categories.count != 0 %>
 <h5>Category(s): 
@@ -12,10 +16,9 @@
 <!-- tag list -->
 <span>Tags: </span>
 <% @sample.tag_list.each do |tag| %>
-    <span class="badge badge-info"><%= link_to tag, tagged_path(tag: tag) %>
-    </span>
-  <% end %><br>
-<%= audio_tag @sample.audio_url, controls:true if @sample.audio %>
+  <span class="badge badge-info"><%= link_to tag, tagged_path(tag: tag) %>
+  </span>
+<% end %>
 <!-- show samples with a common tag, if any -->  
 <% if @related_samples.length != 0 %>  
 <h5>related samples: 
