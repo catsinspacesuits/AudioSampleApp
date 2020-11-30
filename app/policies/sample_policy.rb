@@ -1,8 +1,4 @@
 class SamplePolicy < ApplicationPolicy
-  def test
-    @test = user && user.admin
-  end
-
   def destroy?
     user && user.admin
   end
@@ -12,7 +8,7 @@ class SamplePolicy < ApplicationPolicy
   end
 
   def new?
-    @test
+    user && user.admin
   end
 
   def update?

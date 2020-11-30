@@ -22,11 +22,15 @@ class SamplesController < ApplicationController
   def create
     @sample = Sample.new(sample_params)
     authorize @sample
-    @sample.save
-    if @sample.save
-      redirect_to samples_path
-    else
-      render 'new'
+
+    respond_to do |format|
+      if @sample.save
+        format.html { redirect_to samples_path, notice: 'Sample was successfully created.' }
+        format.json { render :index, status: :created, location: @sample }
+      else
+        format.html { render :new }
+        format.json { render json: @sample.errors, status: :unprocessable_entity }
+      end
     end
   end
 
