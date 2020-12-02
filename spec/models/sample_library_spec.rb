@@ -1,5 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe SampleLibrary, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe 'SampleLibrary validations' do   
+  describe SampleLibrary do
+
+    it 'is an ApplicationRecord' do
+      is_expected.to be_an(ApplicationRecord)
+    end     
+    
+    # Associations
+    describe 'associations' do
+      it { should belong_to(:sample) }
+      it { should belong_to(:library) }
+    end
+  end
 end
