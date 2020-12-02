@@ -6,7 +6,6 @@ FactoryBot.define do
     admin { true }
   end
 
-
   factory :sample do
      title { "Test Sample" }
      description { 'blah blah description here.' }
@@ -17,6 +16,14 @@ FactoryBot.define do
      sample_rate { '96kHz/24-bit' }
      audio { Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/splash.wav') }
   end 
+
+  factory :category do    
+    name { "Nature" }
+  end
+
+  factory :library do    
+    name { "Berlin Sounds" }
+  end
 end
 
 

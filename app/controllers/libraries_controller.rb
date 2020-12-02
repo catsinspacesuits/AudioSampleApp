@@ -36,8 +36,8 @@ class LibrariesController < ApplicationController
     authorize @library
     respond_to do |format|
       if @library.update(library_params)
-        format.html { redirect_to @library, notice: 'Library was successfully updated.' }
-        format.json { render :show, status: :ok, location: @library }
+        format.html { redirect_to libraries_path, notice: 'Library was successfully updated.' }
+        format.json { render :index, status: :ok, location: @library }
       else
         format.html { render :edit }
         format.json { render json: @library.errors, status: :unprocessable_entity }
