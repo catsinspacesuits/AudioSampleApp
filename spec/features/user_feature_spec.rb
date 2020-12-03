@@ -42,7 +42,9 @@ feature 'User authentication' do
   #user sign in
 
   scenario 'with valid credentials without confirming email' do
-    user = create :user
+    user = create(:user)
+    user.confirmed_at = ""
+    user.save
 
     visit new_user_session_path
     fill_in 'Email', with: user.email
@@ -69,7 +71,6 @@ feature 'User authentication' do
     user = create :user
 
     visit new_user_password_path
-
     fill_in 'Email', with: user.email
     click_button 'Send me reset password instructions'
 
@@ -79,7 +80,6 @@ feature 'User authentication' do
 
   scenario 'user enters an invalid email' do
     visit new_user_password_path
-
     fill_in 'Email', with: 'username@example.com'
     click_button 'Send me reset password instructions'
 

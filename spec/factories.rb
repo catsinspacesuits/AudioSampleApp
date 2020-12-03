@@ -4,6 +4,7 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     admin { true }
+    confirmed_at Time.now
   end
 
   factory :sample do
