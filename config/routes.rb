@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'pages/home'
-  devise_for :users
+  devise_for :users, controllers: {
+    confirmations: 'confirmations'
+  }
   root 'pages#home'
   resources :samples
   get '/tagged', to: 'samples#tagged', as: :tagged

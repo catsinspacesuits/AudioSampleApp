@@ -10,8 +10,7 @@ feature 'User authentication' do
     fill_in 'user_password_confirmation', with: 'password'
     click_button 'Sign up'
 
-    expect(page).to have_text 'Welcome! You have signed up successfully.'
-    expect(page).to have_link 'Sign Out'
+    expect(page).to have_text 'A message with a confirmation link has been sent to your email address'
     expect(page).to have_current_path root_path
   end
 
@@ -24,8 +23,25 @@ feature 'User authentication' do
     expect(page).to have_no_link 'Sign Out'
   end
 
+  scenario 'with already used email' do
+    visit new_user_registration_path
+
+    fill_in 'Email', with: 'username@example.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
+    click_button 'Sign up'
+    click_link 'Create Account'
+    fill_in 'Email', with: 'username@example.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
+    click_button 'Sign up'
+
+    expect(page).to have_text 'Email has already been taken'
+  end
+
   #user sign in
-  scenario 'with valid credentials' do
+
+  scenario 'with valid credentials without confirming email' do
     user = create :user
 
     visit new_user_session_path
@@ -33,9 +49,7 @@ feature 'User authentication' do
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    expect(page).to have_text 'Signed in successfully.'
-    expect(page).to have_link 'Sign Out'
-    expect(page).to have_current_path root_path
+    expect(page).to have_text 'You have to confirm your email address before continuing'
   end
 
   scenario 'with invalid credentials' do
@@ -48,24 +62,7 @@ feature 'User authentication' do
 
     expect(page).to have_text 'Invalid Email or password.'
     expect(page).to have_no_link 'Sign Out'
-  end
-
-  #user sign out
-  scenario 'user signed in' do
-    user = create :user
-
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
-    visit root_path
-    click_link 'Sign Out'
-
-    expect(page).to have_text 'Signed out successfully.'
-    expect(page).to have_no_link 'Sign Out'
-    expect(page).to have_current_path root_path
-  end
+  end  
 
   #user reset password
   # scenario 'user enters a valid email' do
