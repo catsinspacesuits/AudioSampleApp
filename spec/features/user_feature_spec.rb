@@ -64,27 +64,27 @@ feature 'User authentication' do
     expect(page).to have_no_link 'Sign Out'
   end  
 
-  #user reset password
-  # scenario 'user enters a valid email' do
-  #   user = create :user
+  # user reset password
+  scenario 'user enters a valid email' do
+    user = create :user
 
-  #   visit new_user_password_path
+    visit new_user_password_path
 
-  #   fill_in 'Email', with: user.email
-  #   click_button 'Send me reset password instructions'
+    fill_in 'Email', with: user.email
+    click_button 'Send me reset password instructions'
 
-  #   expect(page).to have_text 'You will receive an email with instructions'
-  #   expect(page).to have_current_path new_user_session_path
-  # end
+    expect(page).to have_text 'You will receive an email with instructions'
+    expect(page).to have_current_path new_user_session_path
+  end
 
-  # scenario 'user enters an invalid email' do
-  #   visit new_user_password_path
+  scenario 'user enters an invalid email' do
+    visit new_user_password_path
 
-  #   fill_in 'Email', with: 'username@example.com'
-  #   click_button 'Send me reset password instructions'
+    fill_in 'Email', with: 'username@example.com'
+    click_button 'Send me reset password instructions'
 
-  #   expect(page).to have_text 'Email not found'
-  # end
+    expect(page).to have_text 'Email not found'
+  end
 
   # scenario 'user changes password' do
   #   token = create(:user).send_reset_password_instructions
