@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "creating a sample", type: :feature do
+describe "admin creating a sample", type: :feature do
   before :each do
     user = FactoryBot.create(:user)
     login_as(user, :scope => :user)
