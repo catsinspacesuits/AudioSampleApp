@@ -85,27 +85,4 @@ feature 'User authentication' do
 
     expect(page).to have_text 'Email not found'
   end
-
-  # scenario 'user changes password' do
-  #   token = create(:user).send_reset_password_instructions
-
-  #   visit edit_user_password_path(reset_password_token: token)
-
-  #   fill_in 'New password', with: 'p4ssw0rd'
-  #   fill_in 'Confirm new password', with: 'p4ssw0rd'
-  #   click_button 'Change my password'
-
-  #   expect(page).to have_text 'Your password has been changed successfully.'
-  #   expect(page).to have_current_path root_path
-  # end
-
-  # scenario 'password reset token is invalid' do
-  #   visit edit_user_password_path(reset_password_token: 'token')
-
-  #   fill_in 'New password', with: 'p4ssw0rd'
-  #   fill_in 'Confirm new password', with: 'p4ssw0rd'
-  #   click_button 'Change my password'
-
-  #   expect(page).to have_text 'Reset password token is invalid'
-  # end
 end

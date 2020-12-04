@@ -1,7 +1,7 @@
 <%= simple_form_for @sample do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :tag_list, label: "Tag List (comma separated please!)" %>
+  <%= f.input :tag_list, label: "Tag List (comma separated please!)",:input_html => { value: @sample.tag_list.join(", ") } %>
   <%= f.input :file_type, :collection => %w[wav mp3 flac], selected: "wav" %>
   <%= f.input :file_size %>
   <%= f.input :channels, :collection => %w[stereo mono], selected: "stereo" %>
