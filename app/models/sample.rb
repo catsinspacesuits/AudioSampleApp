@@ -12,6 +12,9 @@ class Sample < ApplicationRecord
   has_many :libraries, through: :sample_libraries
   has_many :sample_categories
   has_many :categories, through: :sample_categories
+
+  accepts_nested_attributes_for :categories
+
   # validations
   # validates :title, :file_type, :audio_data, :channels, :file_size, :sample_rate, presence: { message: "Field is mandatory"}
   # validates :title, uniqueness: { message: "Title already used. Please use another."}
